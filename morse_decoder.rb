@@ -16,18 +16,9 @@ end
 puts decode_word('-... --- -..-')
 
 def decode(morse_str)
-  word = ''
-  final_text = ''
-
-  morse_str.split('   ').each do |i|
-    i.split.each do |r|
-      word.concat(@morse_dictionary[r])
-    end
-    final_text.concat("#{word} ")
-    word = ''
-  end
-  final_text
+  morse_str.split('   ').map { |word| decode_word(word) }.join(' ')
 end
+
 morse_str = '.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...'
 puts decode(morse_str)
 
