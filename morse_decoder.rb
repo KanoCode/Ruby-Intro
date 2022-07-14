@@ -21,8 +21,3 @@ end
 
 morse_str = '.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...'
 puts decode(morse_str)
-
-# We will have a variable to track down the space characters
-
-# if the space character >= 2 then we add the space to our word else we ignore it
-# loop through each character in a morse_str if the next
