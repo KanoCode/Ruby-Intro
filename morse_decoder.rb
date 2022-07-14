@@ -1,19 +1,27 @@
+# morse dictionary
+@morse_dictionary = { '.-' => 'A', '-...' => 'B', '-.-.' => 'C', '-..' => 'D',
+                      '.' => 'E', '..-.' => 'F', '--.' => 'G', '....' => 'H', '..' => 'I', '.---' => 'J', '-.-' => 'K',
+                      '.-..' => 'L', '--' => 'M', '-.' => 'N', '---' => 'O', '.--.' => 'P', '--.-' => 'Q',
+                      '.-.' => 'R', '...' => 'S', '-' => 'T', '..-' => 'U', '...-' => 'V', '.--' => 'W',
+                      '-..-' => 'X', '-.--' => 'Y', '--..' => 'Z' }
+
+def decode_char(str)
+  @morse_dictionary[str]
+end
+puts decode_char('-...')
+
+def decode_word(str)
+  str.split.map { |char| decode_char(char) }.join
+end
+puts decode_word('-... --- -..-')
+
 def decode(morse_str)
-  word = ''
-  final_text = ''
-
-  morse_dictionary = { '.-' => 'A', '-...' => 'B', '-.-.' => 'C', '-..' => 'D',
-                       '.' => 'E', '..-.' => 'F', '--.' => 'G', '....' => 'H', '..' => 'I', '.---' => 'J', '-.-' => 'K',
-                       '.-..' => 'L', '--' => 'M', '-.' => 'N', '---' => 'O', '.--.' => 'P', '--.-' => 'Q',
-                       '.-.' => 'R', '...' => 'S', '-' => 'T', '..-' => 'U', '...-' => 'V', '.--' => 'W',
-                       '-..-' => 'X', '-.--' => 'Y', '--..' => 'Z' }
-
   word = ''
   final_text = ''
 
   morse_str.split('   ').each do |i|
     i.split.each do |r|
-      word.concat(morse_dictionary[r])
+      word.concat(@morse_dictionary[r])
     end
     final_text.concat("#{word} ")
     word = ''
@@ -21,7 +29,7 @@ def decode(morse_str)
   final_text
 end
 morse_str = '.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...'
-p decode(morse_str)
+puts decode(morse_str)
 
 # We will have a variable to track down the space characters
 
